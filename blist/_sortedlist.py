@@ -186,7 +186,8 @@ class _sortedbase(collections.Sequence):
         "Do a linear search through all items with the same key"
         key = self._u2key(value)
         while i < len(self._blist):
-            if self._i2u(self._blist[i]) == value:
+            # Compare keys rather than values here
+            if self._u2key(self._i2u(self._blist[i])) == key:
                 return i
             elif key < self._i2key(self._blist[i]):
                 break
